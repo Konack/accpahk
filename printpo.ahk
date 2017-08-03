@@ -23,7 +23,6 @@ Send, {P}
 Send, {Enter}
 Send, {I}
 Send, {Enter 7}
-Send, {p}
 FormatTime, CurrentDateTime,, yyMMdd
 SendInput %CurrentDateTime%
 Send, 99
