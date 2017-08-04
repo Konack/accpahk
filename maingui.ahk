@@ -15,9 +15,10 @@ GuiClose:
 ExitApp
 
 ButtonStart1: ; Button for printing Purchase orders
-	Run,
+	Run, printpo.ahk
 	return
 ButtonStart2: ; Button for completing apple credit memos
+	Run, applem.ahk
 	return
 ButtonStart3: ; Button for ...
 	return
