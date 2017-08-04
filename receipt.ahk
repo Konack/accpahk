@@ -1,5 +1,4 @@
-﻿^r::
-SetKeyDelay 45
+﻿SetKeyDelay 45
 Click 252, 36
 Sleep, 50
 Send, e
