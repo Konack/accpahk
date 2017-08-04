@@ -3,14 +3,13 @@
 ; If you wish to have a different icon for this script to distinguish it from
 ; other scripts in the tray, provide the filename below (leave blank to have
 ; no icon). For example: E:\stuff\Pics\icons\GeoIcons\Information.ico
-I_Icon = C:\Users\Konack\Desktop\AHK\Extra\25345.ico
+I_Icon = %A_ScriptDir%\assets\icons\apple.ico
 
 ; Change tray icon (if one was specified in the configuration section above):
 if I_Icon <>
     IfExist, %I_Icon%
         Menu, Tray, Icon, %I_Icon%
 
-^y::
 vGui:
 Gui, +Resize
 Gui, Add, Text,, Apple:
