@@ -11,7 +11,9 @@ if I_Icon <>
         Menu, Tray, Icon, %I_Icon%
 ^o::
 SetKeyDelay 80
+Sleep 300
 Click 263, 39
+Sleep 150
 Send, {P}
 Send, {Enter 7}
 Send, 17052799
@@ -43,6 +45,7 @@ if ErrorLevel
     Run, SnippingTool.exe
     WinWait, Snipping Tool, , 3
     WinActivate, Snipping Tool
+    Sleep 180
     MouseClick, left, 42, 42
     Sleep, 500
     MouseClick, left, 150, 150
