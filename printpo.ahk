@@ -12,6 +12,7 @@ if I_Icon <>
 ^o::
 SetKeyDelay 80
 Sleep 300
+Click 262, 38, 0
 Click 263, 39
 Sleep 150
 Send, {P}
@@ -48,6 +49,7 @@ if ErrorLevel
     Sleep 180
     MouseClick, left, 42, 42
     Sleep, 500
+    MouseClick, left, 149, 149, 0
     MouseClick, left, 150, 150
     Sleep, 500
     Send, ^p
