@@ -25,10 +25,10 @@ return  ; End of auto-execute section. The script is idle until the user does so
 GuiClose:
 ExitApp
 ButtonOK:
+SetKeyDelay 200
 Gui, Submit  ; Save the input from the user to each control's associated variable.
-WinActivate, ACCPAC Vision Point                                                  User ID: RC10
-WinWait, ACCPAC Vision Point                                                  User ID: RC10
-SetKeyDelay 100
+WinActivate, ACCPAC Vision Point                                                  User ID: FC10
+WinWait, ACCPAC Vision Point                                                  User ID: FC10
 Click, 165, 40
 Send, r
 Send, Apple.
@@ -41,3 +41,4 @@ Send, a
 Send, CRD
 Send, %Invoice%
 Send, {Enter 5}
+return
