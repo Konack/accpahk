@@ -11,8 +11,8 @@ if I_Icon <>
         Menu, Tray, Icon, %I_Icon%
 
 ^r::
-SetKeyDelay 50
-Click 252, 36
+SetKeyDelay 75
+Send, !r
 Send, e
 Send, p
 Send, d

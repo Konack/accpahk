@@ -10,12 +10,12 @@ if I_Icon <>
     IfExist, %I_Icon%
         Menu, Tray, Icon, %I_Icon%
 ^o::
-SetKeyDelay 80
-Sleep 300
-Click 262, 38, 0
-Click 263, 39
+SetKeyDelay 75
+WinWait, ACCPAC Vision Point, , 3
+WinActivate, ACCPAC Vision Point
 Sleep 150
-Send, {P}
+Send, !r
+Send, p
 Send, {Enter 7}
 Send, 17052799
 Send, {Enter 4}
@@ -29,46 +29,14 @@ Send, {P}
 WinWait, ACCPAC Vision Point, , 3
 WinActivate, ACCPAC Vision Point
 Send, y
-Sleep, 10000
+Sleep 350
 PixelSearch, Px, Py, 300, 320, 700, 500, 000080, 50, Fast
 if ErrorLevel
 {
-    SetKeyDelay 150
-    Click 270, 40
-    Send, {P}
     Send, {Enter}
-    Send, {I}
-    Send, {Enter 7}
-    FormatTime, CurrentDateTime,, yyMMdd
-    SendInput %CurrentDateTime%
-    Send, 99
-    Send, {Enter}
-    Run, SnippingTool.exe
-    WinWait, Snipping Tool, , 3
-    WinActivate, Snipping Tool
-    Sleep 180
-    MouseClick, left, 42, 42
-    Sleep, 500
-    MouseClick, left, 149, 149, 0
-    MouseClick, left, 150, 150
-    Sleep, 500
-    Send, ^p
-    WinWait, Print, , 3
-    WinActivate, Print
-    MouseClick, left, 80, 120
-    Send, {Enter}
-    Sleep, 500
-    Send, {Enter}
-    WinWait, Snipping Tool, , 3
-    WinActivate, Snipping Tool
-    Send, !{F4}
-    WinWait, ACCPAC Vision Point, , 3
-    WinActivate, ACCPAC Vision Point
-    Send, {Esc}
-    Send, {Esc}
+    MsgBox, No new purcahse orders to print.
 }
 else
 {
-    Send, {Enter}
-    MsgBox, No new purcahse orders to print.
+    MsgBox, All new purchase orders have been printed!
 }
