@@ -63,8 +63,8 @@ ButtonStart2: ; Button for completing apple credit memos
 	ExitApp
 	ButtonOK:
 		Gui, Submit  ; Save the input from the user to each control's associated variable.
-		WinActivate, ACCPAC Vision Point                                                  User ID: RC10
-		WinWait, ACCPAC Vision Point                                                  User ID: RC10
+		WinWait, ACCPAC Vision Point, , 3
+		WinActivate, ACCPAC Vision Point
 		SetKeyDelay 100
 		Click, 165, 40
 		Send, r
@@ -105,3 +105,6 @@ ButtonStart7: ; Button for ...
 	return
 ButtonStart8: ; Button for ...
 	return
+	
+;	WinWait, Accpahk, , 3
+;	WinActivate, Accpahk
