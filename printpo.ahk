@@ -33,10 +33,9 @@ Sleep 350
 PixelSearch, Px, Py, 300, 320, 700, 500, 000080, 50, Fast
 if ErrorLevel
 {
-    Send, {Enter}
-    MsgBox, No new purcahse orders to print.
+    MsgBox, All new purchase orders have been printed!
 }
 else
 {
-    MsgBox, All new purchase orders have been printed!
+	return
 }
