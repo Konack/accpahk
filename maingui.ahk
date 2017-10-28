@@ -66,7 +66,7 @@ ButtonStart2: ; Button for completing apple credit memos
 		WinWait, ACCPAC Vision Point, , 3
 		WinActivate, ACCPAC Vision Point
 		SetKeyDelay 100
-		Click, 165, 40
+		Send, !t
 		Send, r
 		Send, Apple.
 		Send, {Enter}
