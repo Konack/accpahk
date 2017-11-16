@@ -1,4 +1,7 @@
+;============ Variables ============;
 SetWorkingDir %A_ScriptDir%
+
+;============ GUI ============;
 Gui, Font, s12
 Gui, Add, Text, x22 y9 w170 h40 center, Select a button to start a task:
 Gui, Font,
@@ -17,6 +20,7 @@ return
 GuiClose:
 ExitApp
 
+;============ Actions ============;
 ButtonStart1: ; Button for printing updated Purchase orders (New and cahnged ones ex. 17081102-A)
 	SetKeyDelay 75
 	WinWait, ACCPAC Vision Point, , 3
@@ -48,16 +52,6 @@ ButtonStart1: ; Button for printing updated Purchase orders (New and cahnged one
 		return
 	}
 ButtonStart2: ; Button for completing apple credit memos
-	vGui:
-		Gui, +Resize
-		Gui, Add, Text,, Apple:
-		Gui, Add, Text,, Invoice:
-		Gui, Add, Text,, Balance:
-		Gui, Add, Edit, vApple limit8 ym,  ; The ym option starts a new column of controls.
-		Gui, Add, Edit, vInvoice limit6,
-		Gui, Add, Edit, vBalance
-		Gui, Add, Button, default, OK  ; The label ButtonOK (if it exists) will be run when the button is pressed.
-		Gui, Show,, ACM
 	return  ; End of auto-execute section. The script is idle until the user does something.
 	GuiCloseApple:
 	ExitApp
@@ -146,6 +140,3 @@ ButtonStart7: ; Button for ...
 	return
 ButtonStart8: ; Button for ...
 	return
-	
-;	WinWait, Accpahk, , 3
-;	WinActivate, Accpahk
