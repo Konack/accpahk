@@ -89,9 +89,8 @@ ButtonStart5: ; Button for printing purchase order receipt
 	Send, {Enter 7}s
 	WinWait, Print Setup, , 3
 	WinActivate, Print Setup
-	MouseClick, left, 242, 64
-	MouseClick, left, 242, 99
-	Send, {Enter}p
+	Send, {Up}{Down}
+	Send, {Enter 2}
 	return
 ButtonStart6: ; Button for printing current PO list
 	;Listing new POs
@@ -104,9 +103,8 @@ ButtonStart6: ; Button for printing current PO list
 	Send, s
 	WinWait, Print Setup, , 3
 	WinActivate, Print Setup
-	MouseClick, left, 242, 64
-	MouseClick, left, 242, 99
-	Send, {Enter}
+	Send, {Up}{Down}
+	Send, {Enter 2}
 	Sleep, 150
 	Send, {Enter}
 	FormatTime, CurrentDateTime,, yyMMdd
