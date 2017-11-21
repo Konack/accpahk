@@ -51,32 +51,48 @@ ButtonStart1: ; Button for printing updated Purchase orders (New and cahnged one
 	{
 		return
 	}
+
 ButtonStart2: ; Button for completing apple credit memos
-	return  ; End of auto-execute section. The script is idle until the user does something.
-	GuiCloseApple:
-	ExitApp
-	ButtonOK:
-		Gui, Submit  ; Save the input from the user to each control's associated variable.
-		WinWait, ACCPAC Vision Point, , 3
-		WinActivate, ACCPAC Vision Point
-		SetKeyDelay 100
-		Send, !t
-		Send, r
-		Send, Apple.
-		Send, {Enter}
-		Send, %Apple%
-		Send, {Enter}
-		Send, %Balance%
-		Send, s
-		Send, a
-		Send, CRD
-		Send, %Invoice%
-		Send, {Enter 5}
-		return
+	
+vGui:
+	Gui Apple:Default
+    Gui, +Resize
+    Gui, Add, Text,, Apple:
+    Gui, Add, Text,, Invoice:
+    Gui, Add, Text,, Balance:
+    Gui, Add, Edit, vApple limit8 ym,  ; The ym option starts a new column of controls.
+    Gui, Add, Edit, vInvoice limit6,
+    Gui, Add, Edit, vBalance
+    Gui, Add, Button, default, OK  ; The label ButtonOK will be run when the button is pressed.
+    Gui, Show,, ACM
+return  ; End of auto-execute section. The script is idle until the user does something.
+
+GuiCloseAP:
+    ExitApp
+    
+ButtonOK:
+    Gui, Submit  ; Save the input from the user to each control's associated variable.
+    WinWait, ACCPAC Vision Point, , 3
+    WinActivate, ACCPAC Vision Point
+    SetKeyDelay 100
+    Click, 165, 40
+    Send, r
+    Send, Apple.
+    Send, {Enter}
+    Send, %Apple%
+    Send, {Enter}
+    Send, %Balance%
+    Send, s
+    Send, a
+    Send, CRD
+    Send, %Invoice%
+    Send, {Enter 5} 
 ButtonStart3: ; Button for ...
 	return
+
 ButtonStart4: ; Button for ...
 	return
+
 ButtonStart5: ; Button for printing purchase order receipt
 	SetKeyDelay 75
 	Send, !r
@@ -92,6 +108,7 @@ ButtonStart5: ; Button for printing purchase order receipt
 	Send, {Up}{Down}
 	Send, {Enter 2}
 	return
+
 ButtonStart6: ; Button for printing current PO list
 	;Listing new POs
 	SetKeyDelay, 75
@@ -134,7 +151,9 @@ ButtonStart6: ; Button for printing current PO list
 	Send, {Esc}
 	Send, {Esc}
 	return
+
 ButtonStart7: ; Button for ...
 	return
+
 ButtonStart8: ; Button for ...
 	return
