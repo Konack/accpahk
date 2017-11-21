@@ -71,8 +71,8 @@ ButtonOK:
     WinWait, ACCPAC Vision Point, , 3
     WinActivate, ACCPAC Vision Point
     SetKeyDelay 100
-    Click, 165, 40
-    Send, r
+	Send, !p
+	Send, r
     Send, Apple.
     Send, {Enter}
     Send, %Apple%
