@@ -56,7 +56,6 @@ ButtonStart2: ; Button for completing apple credit memos
 	
 vGui:
 	Gui Apple:Default
-    Gui, +Resize
     Gui, Add, Text,, Apple:
     Gui, Add, Text,, Invoice:
     Gui, Add, Text,, Balance:
@@ -66,9 +65,6 @@ vGui:
     Gui, Add, Button, default, OK  ; The label ButtonOK will be run when the button is pressed.
     Gui, Show,, ACM
 return  ; End of auto-execute section. The script is idle until the user does something.
-
-GuiCloseAP:
-    ExitApp
     
 ButtonOK:
     Gui, Submit  ; Save the input from the user to each control's associated variable.
