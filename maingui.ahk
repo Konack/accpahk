@@ -1,6 +1,15 @@
 ;============ Variables ============;
 SetWorkingDir %A_ScriptDir%
 
+;============ Startup ============;
+Run, R:\accpahk\VP112e ;Starts accpac
+WinWait, ACCPAC VisionPoint
+WinActivate, ACCPAC VisionPoint
+Send, RC10 ;Login
+Send, {Enter}
+Send, {o} ;Selects prefered accpac program
+Sleep, 2000
+
 ;============ GUI ============;
 Gui, Font, s12
 Gui, Add, Text, x22 y9 w170 h40 center, Select a button to start a task:
@@ -56,9 +65,9 @@ ButtonStart2: ; Button for completing apple credit memos
 	
 vGui:
 	Gui Apple:Default
-    Gui, Add, Text,, Apple:
-    Gui, Add, Text,, Invoice:
-    Gui, Add, Text,, Balance:
+    Gui, Add, Text,, Apple
+    Gui, Add, Text,, Invoice
+    Gui, Add, Text,, Balance
     Gui, Add, Edit, vApple limit8 ym,  ; The ym option starts a new column of controls.
     Gui, Add, Edit, vInvoice limit6,
     Gui, Add, Edit, vBalance
@@ -83,6 +92,7 @@ ButtonOK:
     Send, CRD
     Send, %Invoice%
     Send, {Enter 5} 
+	Gui, Destroy
 ButtonStart3: ; Button for ...
 	return
 
@@ -153,3 +163,9 @@ ButtonStart7: ; Button for ...
 
 ButtonStart8: ; Button for ...
 	return
+
+;============ Exit ============;
+Close:
+  IfWinNotExist, 
+    exitapp
+Return
