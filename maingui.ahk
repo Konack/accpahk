@@ -165,9 +165,5 @@ ButtonStart7: ; Button for ...
 
 ButtonStart8: ; Button for ...
 	return
-
+	
 ;============ Exit ============;
-Close:
-  IfWinNotExist, 
-    exitapp
-Return
