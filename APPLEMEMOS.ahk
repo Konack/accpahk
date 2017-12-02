@@ -12,33 +12,35 @@ if I_Icon <>
 
 ^y::
 vGui:
-Gui, +Resize
-Gui, Add, Text,, Apple:
-Gui, Add, Text,, Invoice:
-Gui, Add, Text,, Balance:
-Gui, Add, Edit, vApple limit8 ym,  ; The ym option starts a new column of controls.
-Gui, Add, Edit, vInvoice limit6,
-Gui, Add, Edit, vBalance
-Gui, Add, Button, default, OK  ; The label ButtonOK (if it exists) will be run when the button is pressed.
-Gui, Show,, ACM
+    Gui, +Resize
+    Gui, Add, Text,, Apple:
+    Gui, Add, Text,, Invoice:
+    Gui, Add, Text,, Balance:
+    Gui, Add, Edit, vApple limit8 number ym,  ; The ym option starts a new column of controls.
+    Gui, Add, Edit, vInvoice limit6 number,
+    Gui, Add, Edit, vBalance
+    Gui, Add, Button, default, OK  ; The label ButtonOK will be run when the button is pressed.
+    Gui, Show,, ACM
 return  ; End of auto-execute section. The script is idle until the user does something.
 
 GuiClose:
 ExitApp
+    
 ButtonOK:
-Gui, Submit  ; Save the input from the user to each control's associated variable.
-WinActivate, ACCPAC Vision Point                                                  User ID: RC10
-WinWait, ACCPAC Vision Point                                                  User ID: RC10
-SetKeyDelay 100
-Click, 165, 40
-Send, r
-Send, Apple.
-Send, {Enter}
-Send, %Apple%
-Send, {Enter}
-Send, %Balance%
-Send, s
-Send, a
-Send, CRD
-Send, %Invoice%
-Send, {Enter 5}
+    Gui, Submit  ; Save the input from the user to each control's associated variable.
+    WinWait, ACCPAC Vision Point, , 3
+    WinActivate, ACCPAC Vision Point
+    SetKeyDelay 100
+    Click, 165, 40
+    Send, r
+    Send, Apple.
+    Send, {Enter}
+    Send, %Apple%
+    Send, {Enter}
+    Send, %Balance%
+    Send, s
+    Send, a
+    Send, CRD
+    Send, %Invoice%
+    Send, {Enter 5}
+    return

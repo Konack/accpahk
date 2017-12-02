@@ -63,25 +63,28 @@ ButtonStart1: ; Button for printing updated Purchase orders (New and cahnged one
 
 ButtonStart2: ; Button for completing apple credit memos
 	
-vGui:
-	Gui Apple:Default
-    Gui, Add, Text,, Apple
-    Gui, Add, Text,, Invoice
-    Gui, Add, Text,, Balance
-    Gui, Add, Edit, vApple limit8 ym,  ; The ym option starts a new column of controls.
-    Gui, Add, Edit, vInvoice limit6,
+	vGui:
+    Gui, +Resize
+    Gui, Add, Text,, Apple:
+    Gui, Add, Text,, Invoice:
+    Gui, Add, Text,, Balance:
+    Gui, Add, Edit, vApple limit8 number ym,  ; The ym option starts a new column of controls.
+    Gui, Add, Edit, vInvoice limit6 number,
     Gui, Add, Edit, vBalance
     Gui, Add, Button, default, OK  ; The label ButtonOK will be run when the button is pressed.
     Gui, Show,, ACM
-return  ; End of auto-execute section. The script is idle until the user does something.
+	return  ; End of auto-execute section. The script is idle until the user does something.
+
+	GuiCloseAP:
+	ExitApp
     
-ButtonOK:
+	ButtonOK:
     Gui, Submit  ; Save the input from the user to each control's associated variable.
     WinWait, ACCPAC Vision Point, , 3
     WinActivate, ACCPAC Vision Point
     SetKeyDelay 100
-	Send, !p
-	Send, r
+    Click, 165, 40
+    Send, r
     Send, Apple.
     Send, {Enter}
     Send, %Apple%
@@ -91,8 +94,9 @@ ButtonOK:
     Send, a
     Send, CRD
     Send, %Invoice%
-    Send, {Enter 5} 
-	Gui, Destroy
+    Send, {Enter 5}
+    Gui, Destroy
+
 ButtonStart3: ; Button for ...
 	return
 
