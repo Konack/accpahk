@@ -11,22 +11,22 @@ Send, {o} ;Selects prefered accpac program
 Sleep, 2000
 
 ;============ GUI ============;
-Gui, Font, s12
-Gui, Add, Text, x22 y9 w170 h40 center, Select a button to start a task:
-Gui, Font,
-Gui, Add, Button, x22 y59 w80 h30 gButtonStart1, Update POs
-Gui, Add, Button, x22 y99 w80 h30 gButtonStart2, &Apple Credit Memos
-Gui, Add, Button, x22 y139 w80 h30 gButtonStart3, Place Holder
-Gui, Add, Button, x22 y179 w80 h30 gButtonStart4, Place Holder
-Gui, Add, Button, x112 y59 w80 h30 gButtonStart5, PO &Receipt
-Gui, Add, Button, x112 y99 w80 h30 gButtonStart6, PO &List
-Gui, Add, Button, x112 y139 w80 h30 gButtonStart7, Place Holder
-Gui, Add, Button, x112 y179 w80 h30 gButtonStart8, Place Holder
-Gui, Show, w220 h231, Accpahk
+Gui 1: Font, s12
+Gui 1: Add, Text, x22 y9 w170 h40 center, Select a button to start a task:
+Gui 1: Font,
+Gui 1: Add, Button, x22 y59 w80 h30 gButtonStart1, Update POs
+Gui 1: Add, Button, x22 y99 w80 h30 gButtonStart2, &Apple Credit Memos
+Gui 1: Add, Button, x22 y139 w80 h30 gButtonStart3, Place Holder
+Gui 1: Add, Button, x22 y179 w80 h30 gButtonStart4, Place Holder
+Gui 1: Add, Button, x112 y59 w80 h30 gButtonStart5, PO &Receipt
+Gui 1: Add, Button, x112 y99 w80 h30 gButtonStart6, PO &List
+Gui 1: Add, Button, x112 y139 w80 h30 gButtonStart7, Place Holder
+Gui 1: Add, Button, x112 y179 w80 h30 gButtonStart8, Place Holder
+Gui 1: Show, w220 h231, Accpahk
 Send, {Alt}
 return
 
-GuiClose:
+GuiClose1:
 ExitApp
 
 ;============ Actions ============;
@@ -63,23 +63,23 @@ ButtonStart1: ; Button for printing updated Purchase orders (New and cahnged one
 
 ButtonStart2: ; Button for completing apple credit memos
 	
-	vGui:
-    Gui, +Resize
-    Gui, Add, Text,, Apple:
-    Gui, Add, Text,, Invoice:
-    Gui, Add, Text,, Balance:
-    Gui, Add, Edit, vApple limit8 number ym,  ; The ym option starts a new column of controls.
-    Gui, Add, Edit, vInvoice limit6 number,
-    Gui, Add, Edit, vBalance
-    Gui, Add, Button, default, OK  ; The label ButtonOK will be run when the button is pressed.
-    Gui, Show,, ACM
+	Gui2:
+    Gui 2: +Resize
+    Gui 2: Add, Text,, Apple:
+    Gui 2: Add, Text,, Invoice:
+    Gui 2: Add, Text,, Balance:
+    Gui 2: Add, Edit, vApple limit8 number ym,  ; The ym option starts a new column of controls.
+    Gui 2: Add, Edit, vInvoice limit6 number,
+    Gui 2: Add, Edit, vBalance
+    Gui 2: Add, Button, default, OK  ; The label ButtonOK will be run when the button is pressed.
+    Gui 2: Show,, ACM
 	return  ; End of auto-execute section. The script is idle until the user does something.
 
-	GuiCloseAP:
+	GuiClose2:
 	ExitApp
     
 	ButtonOK:
-    Gui, Submit  ; Save the input from the user to each control's associated variable.
+    Gui 2: Submit  ; Save the input from the user to each control's associated variable.
     WinWait, ACCPAC Vision Point, , 3
     WinActivate, ACCPAC Vision Point
     SetKeyDelay 100
@@ -95,7 +95,7 @@ ButtonStart2: ; Button for completing apple credit memos
     Send, CRD
     Send, %Invoice%
     Send, {Enter 5}
-    Gui, Destroy
+    Gui 2: Destroy
 
 ButtonStart3: ; Button for ...
 	return
@@ -105,6 +105,8 @@ ButtonStart4: ; Button for ...
 
 ButtonStart5: ; Button for printing purchase order receipt
 	SetKeyDelay 75
+    WinWait, ACCPAC Vision Point, , 3
+    WinActivate, ACCPAC Vision Point
 	Send, !r
 	Send, e
 	Send, p
@@ -121,45 +123,41 @@ ButtonStart5: ; Button for printing purchase order receipt
 
 ButtonStart6: ; Button for printing current PO list
 	;Listing new POs
-	SetKeyDelay, 75
+	SetKeyDelay 100
+	WinWait, ACCPAC Vision Point, , 3
+	WinActivate, ACCPAC Vision Point
 	Send, !r
 	Send, p
-	Send, {Enter}
+	Send {Enter}
 	Send, i
 	Send, {Enter 6}
+	;Select Lazer printer next to receiving
 	Send, s
 	WinWait, Print Setup, , 3
 	WinActivate, Print Setup
 	Send, {Up}{Down}
 	Send, {Enter 2}
-	Sleep, 150
-	Send, {Enter}
+	WinWait, ACCPAC Vision Point, , 3
+	WinActivate, ACCPAC Vision Point
 	FormatTime, CurrentDateTime,, yyMMdd
 	SendInput %CurrentDateTime%
 	Send, 99
 	Send, {Enter}
+	Sleep, 150
 	;Using Snipping tool to create a screenshot of window
 	Run, SnippingTool.exe
 	WinWait, Snipping Tool, , 3
 	WinActivate, Snipping Tool
 	Send, !n
-	Sleep, 500
-	MouseClick, left, 150, 150
-	Sleep, 500
-	;Select Lazer printer next to receiving
+	Sleep, 250
+	Send, {Enter 2}
 	Send, ^p
-	WinWait, Print, , 3
-	WinActivate, Print
-	Send, {Up}{Down}
 	Send, {Enter}
-	WinWait, Snipping Tool, , 3
-	WinActivate, Snipping Tool
 	;Cleanup
-	Send, !{F4}
+	Send !{F4}
 	WinWait, ACCPAC Vision Point, , 3
 	WinActivate, ACCPAC Vision Point
-	Send, {Esc}
-	Send, {Esc}
+	Send, {Esc 2}
 	return
 
 ButtonStart7: ; Button for ...
