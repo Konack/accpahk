@@ -128,7 +128,7 @@ ButtonStart6: ; Button for printing current PO list
 	WinActivate, ACCPAC Vision Point
 	Send, !r
 	Send, p
-	Send {Enter}
+	Send, {Enter}
 	Send, i
 	Send, {Enter 6}
 	;Select Lazer printer next to receiving
