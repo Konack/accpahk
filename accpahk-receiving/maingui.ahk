@@ -32,6 +32,11 @@ ExitApp
 ;============ Actions ============;
 ButtonStart1: ; Button for printing updated Purchase orders (New and cahnged ones ex. 17081102-A)
 	SetKeyDelay 75
+	Send, !p
+    Send, o
+    Sleep 500
+    Send, {Enter}
+    Sleep 100
 	WinWait, ACCPAC Vision Point, , 3
 	WinActivate, ACCPAC Vision Point
 	Sleep 150
@@ -54,7 +59,7 @@ ButtonStart1: ; Button for printing updated Purchase orders (New and cahnged one
 	PixelSearch, Px, Py, 300, 320, 700, 500, 000080, 50, Fast
 	if ErrorLevel
 	{
-		MsgBox, All new purchase orders have been printed!
+		MsgBox, All new and updated purchase orders have been printed!
 	}
 	else
 	{
@@ -83,7 +88,12 @@ ButtonStart2: ; Button for completing apple credit memos
     WinWait, ACCPAC Vision Point, , 3
     WinActivate, ACCPAC Vision Point
     SetKeyDelay 100
-    Click, 165, 40
+	Send, !p
+	Send, r
+	Sleep 500
+	Send, {Enter}
+	Sleep 100
+    Send, !t
     Send, r
     Send, Apple.
     Send, {Enter}
