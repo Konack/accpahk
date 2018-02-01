@@ -1,0 +1,1 @@
+C:\Users\accounting2\Downloads\Capture2Text\Capture2Text_CLI.exe --clipboard --screen-rect "8 985 559 1003"
