@@ -9,19 +9,27 @@ I_Icon = C:\accpahk-master\assets\icons\receipt.ico
 if I_Icon <>
     IfExist, %I_Icon%
         Menu, Tray, Icon, %I_Icon%
+^Esc::Reload ; Reload script with Escape key
+
+SetKeyDelay 90
 
 ^r::
-SetKeyDelay 75
+Send, !p
+Send, o
+Sleep 500
+Send, {Enter}
+Sleep 200
 Send, !r
 Send, e
 Send, p
 Send, d
+Sleep 100
 Send, {Enter}
+Sleep 100
 FormatTime, CurrentDateTime,, MMddyy
 SendInput %CurrentDateTime%
 Send, {Enter 7}s
 WinWait, Print Setup, , 3
 WinActivate, Print Setup
-MouseClick, left, 242, 64
-MouseClick, left, 242, 99
-Send, {Enter}p
+Send, {Up}{Down}
+Send, {Enter 2}
